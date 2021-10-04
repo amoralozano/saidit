@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from posts import views as post_view
 from group import views
+from authorization_app import views as auth_view
 
 
 urlpatterns = [
@@ -24,5 +25,7 @@ urlpatterns = [
     path('', post_view.index, name='home'),
     path('admin/', admin.site.urls),
     path('addgroup/', post_view.addSubgroup),
-    path('groupdetail/<int:id>/', views.group_detail, name='detail')
+    path('groupdetail/<int:id>/', views.group_detail, name='detail'),
+    path('login/', auth_view.login_view, name='login'),
+    path('logout/', auth_view.logout_view, name='logout')
 ]

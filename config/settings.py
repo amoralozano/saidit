@@ -26,6 +26,10 @@ if os.path.isfile(dotenv_file):
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
+dotenv_file = os.path.join(BASE_DIR, ".env")
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ['SECRET_KEY']
 
@@ -46,6 +50,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "saidituser",
     "submission_posts",
+    "reply",
+    'posts',
 ]
 
 MIDDLEWARE = [

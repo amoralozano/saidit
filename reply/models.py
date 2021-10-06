@@ -10,6 +10,7 @@ class Reply(models.Model):
     date_replied = models.DateTimeField(default=timezone.now)
     created_by = models.ForeignKey(SaidItUser, on_delete=models.CASCADE)
     # post replied to fk
+    # like/dislike?
 
 
     def __str__(self):

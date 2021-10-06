@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models.deletion import CASCADE
 from django.utils import timezone
 from saidituser.models import SaidItUser
-from posts.models import Post
+
 
 
 

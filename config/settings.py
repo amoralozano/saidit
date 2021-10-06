@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     "saidituser",
     "reply",
     'posts',
+    "group",
+
 ]
 
 MIDDLEWARE = [

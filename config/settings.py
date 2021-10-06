@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     "submission_posts",
     "reply",
     'posts',
+    "group",
+
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,12 @@
+<h1>Welcome to SaidIt, the backend of the internet!</h1>
+
+<a href="/addpost/">Add Post</a>
+<a href="/admin/">Admin</a>
+
+{% for post in posts %}
+
+<ul>
+  {{post.user}} {{post.body}} {{post.time_created}}
+</ul>
+
+{% endfor %}

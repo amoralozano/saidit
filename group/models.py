@@ -4,8 +4,6 @@ from django.utils import timezone
 from saidituser.models import SaidItUser
 
 
-
-
 class SubGroup(models.Model):
     group_name = models.CharField(max_length=30)
     group_description = models.TextField(null=True, blank=False)

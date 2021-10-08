@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     "reply",
     'posts',
     "group",
+    "authorization_app",
 
 ]
 

@@ -15,11 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from posts import views as post_view
+from group import views
 
-from posts import views
 
 urlpatterns = [
-    path('addpost/', views.addPost),
-    path('', views.index, name='home'),
+    path('addpost/', post_view.addPost),
+    path('', post_view.index, name='home'),
     path('admin/', admin.site.urls),
+    path('addgroup/', post_view.addSubgroup),
+    path('groupdetail/<int:id>/', views.group_detail, name='detail')
 ]

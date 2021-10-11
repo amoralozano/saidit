@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from posts import views as post_view
 from group import views
+from saidituser import views as user_view
 from authorization_app import views as auth_view
 from reply import views as reply_view
 
@@ -32,4 +33,7 @@ urlpatterns = [
     path("replydetail/<int:reply_id>/", reply_view.ReplyDetailView.as_view(), name="reply-detail"),
     path("post/<int:post_id>/", post_view.PostView.as_view(), name="post"),
 
+    path('signup/', auth_view.signup_view, name='signup'),
+    path('follow/<int:id>/', user_view.follow, name="follow"),
+    path('unfollow/<int:id>/', user_view.unfollow, name="follow")
 ]

@@ -8,7 +8,7 @@
 
 <ul>
   <li>User: {{post.user}}</li>
-  <li>Body: {{post.body}}</li>
+  <li>Body: <a href="{% url 'post' post.id %} ">{{post.body}}</a></li>
   <li>time created: {{post.time_created}}</li>
   <li>
     <a href="/groupdetail/{{post.posted_in.id}}/">Group: {{post.posted_in}}</a>

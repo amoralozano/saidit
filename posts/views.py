@@ -5,6 +5,9 @@ from posts.models import Post
 from django.contrib.auth.models import Group, User
 from group.forms import AddSubGroup
 from group.models import SubGroup
+from django.views.generic import View
+
+from reply.models import Reply
 
 
 # Create your views here.
@@ -42,3 +45,12 @@ def addSubgroup(request):
         return HttpResponseRedirect(reverse('home'))
     form = AddSubGroup()
     return render(request, 'generic_form.html', {'form': form})
+
+
+class PostView(View):
+    def get(self, request, post_id):
+        template_name = "post_detail.html"
+        post = Post.objects.get(id=post_id)
+        replies = Reply.objects.filter(replied_to=post_id)
+        context = {"post": post, "replies": replies}
+        return render(request, template_name, context)

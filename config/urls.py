@@ -18,6 +18,7 @@ from django.urls import path
 from posts import views as post_view
 from group import views
 from authorization_app import views as auth_view
+from reply import views as reply_view
 
 
 urlpatterns = [
@@ -27,5 +28,8 @@ urlpatterns = [
     path('addgroup/', post_view.addSubgroup),
     path('groupdetail/<int:id>/', views.group_detail, name='detail'),
     path('login/', auth_view.login_view, name='login'),
-    path('logout/', auth_view.logout_view, name='logout')
+    path('logout/', auth_view.logout_view, name='logout'),
+    path("replydetail/<int:reply_id>/", reply_view.ReplyDetailView.as_view(), name="reply-detail"),
+    path("post/<int:post_id>/", post_view.PostView.as_view(), name="post"),
+
 ]

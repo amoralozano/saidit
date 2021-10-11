@@ -1,0 +1,18 @@
+<h1>hello from the post</h1>
+
+{% load mptt_tags %}
+<ul class="root">
+  {% recursetree replies %}
+  <li>
+   {{ node.reply_text }}
+    <li>{{ node.date_replied }}</li>
+    <li>{{ node.created_by }}</li>
+
+    {% if not node.is_leaf_node%}
+    <ul class="children">
+      {{ children }}
+    </ul>
+    {% endif %}
+  </li>
+  {% endrecursetree %}
+</ul>

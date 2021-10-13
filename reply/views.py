@@ -16,3 +16,8 @@ class ReplyDetailView(View):
                     "replies": replies
                     }
         return render(request, template_name, context)
+
+
+
+class CreateReplyView(View):
+    ...

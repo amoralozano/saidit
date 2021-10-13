@@ -7,7 +7,7 @@
 {% for post in posts %}
 
 <ul>
-  <li>User: {{post.user}}</li>
+  <li>User: <a href="/userdetail/{{post.user.id}}/">{{post.user}}</a></li>
   <li>Body: <a href="{% url 'post' post.id %} ">{{post.body}}</a></li>
   <li>time created: {{post.time_created}}</li>
   <a href="/follow/{{user.id}}/"><button>Follow</button></a>

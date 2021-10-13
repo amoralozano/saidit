@@ -35,5 +35,6 @@ urlpatterns = [
 
     path('signup/', auth_view.signup_view, name='signup'),
     path('follow/<int:id>/', user_view.follow, name="follow"),
-    path('unfollow/<int:id>/', user_view.unfollow, name="follow")
+    path('unfollow/<int:id>/', user_view.unfollow, name="follow"),
+    path('userdetail/<int:id>/', user_view.userview, name="userview")
 ]

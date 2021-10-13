@@ -35,5 +35,7 @@ urlpatterns = [
 
     path('signup/', auth_view.signup_view, name='signup'),
     path('follow/<int:id>/', user_view.follow, name="follow"),
-    path('unfollow/<int:id>/', user_view.unfollow, name="follow")
+    path('unfollow/<int:id>/', user_view.unfollow, name="unfollow")
 ]
+
+handler404 = "saidituser.views.handle_not_found"

@@ -21,7 +21,6 @@ def unfollow(request, id):
     print("unfollowed")
     return redirect(request.META.get('HTTP_REFERER'))
 
-<<<<<<< HEAD
 def userview(request, id):
     user = SaidItUser.objects.get(id=id)
     posts = Post.objects.filter(user=user)
@@ -32,8 +31,6 @@ def userview(request, id):
                                                 "followers": followers, 
                                                 "following": following })
 
-=======
 
 def handle_not_found(request, exception):
     return render(request, 'not-found.html')
->>>>>>> main

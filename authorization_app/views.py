@@ -10,14 +10,10 @@ def signup_view(request):
         form = SignupForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
-<<<<<<< HEAD
             user.objects.create_user(
                 display_name=data['display_name'],
                 username=data['username'],
                 password=data['password'])
-=======
-            user.objects.create_user(display_name=data['display_name'], username=data['username'], password=data['password']) # noqa
->>>>>>> main
             return HttpResponseRedirect(reverse('home'))
     form = SignupForm()
     return render(request, 'generic_form.html', {'form': form})

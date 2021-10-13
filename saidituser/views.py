@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from .models import SaidItUser
+from saidituser.models import SaidItUser
 from django.contrib.auth.models import User
 
 
@@ -16,7 +16,11 @@ def follow(request, id):
 def unfollow(request, id):
     self = request.user
     target = SaidItUser.objects.get(id=id)
-    self.following.remove(target)   # remove
+    self.following.remove(target)
     self.save()
     print("unfollowed")
     return redirect(request.META.get('HTTP_REFERER'))
+
+
+def handle_not_found(request, exception):
+    return render(request, 'not-found.html')

@@ -1,17 +1,17 @@
-<h1>Welcome to SaidIt, the backend of the internet!</h1>
+<h1>Welcome to Said-It, the backend of the internet!</h1>
 
 <a href="/addpost/">Add post</a>
 <a href="/addgroup">Add group</a>
 <a href="/admin/">Admin</a>
-
+<a href="/login/">Login</a>
 {% for post in posts %}
 
 <ul>
   <li>User: <a href="/userdetail/{{post.user.id}}/">{{post.user}}</a></li>
   <li>Body: <a href="{% url 'post' post.id %} ">{{post.body}}</a></li>
   <li>time created: {{post.time_created}}</li>
-  <a href="/follow/{{user.id}}/"><button>Follow</button></a>
-  <a href="/unfollow/{{user.id}}/"><button>Unfollow</button></a>
+  <a href="/follow/{{post.user.id}}/"><button>Follow</button></a>
+  <a href="/unfollow/{{post.user.id}}/"><button>Unfollow</button></a>
   <h3>Followers:</h3>
   <p>{{user.followers.count}}</p>
   <h3>Following:</h3>

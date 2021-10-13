@@ -1,7 +1,4 @@
-{% extends 'index.html' %}
-{% block title %}Login{% endblock title%}
-{% block content %}
+{% load socialaccount %}
 {% include 'generic_form.html' %}
 <a href="/signup">Sign Up</a>
-<a href="/logout">Logout</a>
-{% endblock content %}
+<a href="{% provider_login_url 'google' %}">Login with Google</a>

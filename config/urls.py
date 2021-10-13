@@ -13,8 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
+from django.contrib import admin, auth
+from django.urls import path, include
 from posts import views as post_view
 from group import views
 from saidituser import views as user_view
@@ -30,10 +30,16 @@ urlpatterns = [
     path('groupdetail/<int:id>/', views.group_detail, name='detail'),
     path('login/', auth_view.login_view, name='login'),
     path('logout/', auth_view.logout_view, name='logout'),
+<<<<<<< HEAD
+    path('signup/', auth_view.signup_view, name='signup'),
+    path('accounts/', include('allauth.urls')),
+
+=======
     path("replydetail/<int:reply_id>/", reply_view.ReplyDetailView.as_view(), name="reply-detail"),
     path("post/<int:post_id>/", post_view.PostView.as_view(), name="post"),
 
     path('signup/', auth_view.signup_view, name='signup'),
     path('follow/<int:id>/', user_view.follow, name="follow"),
     path('unfollow/<int:id>/', user_view.unfollow, name="follow")
+>>>>>>> main
 ]

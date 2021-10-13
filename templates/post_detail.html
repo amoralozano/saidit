@@ -4,9 +4,12 @@
 <ul class="root">
   {% recursetree replies %}
   <li>
-   {{ node.reply_text }}
+   <a href= {% url 'reply-detail' node.id %}>{{ node.reply_text }}</a>
     <li>{{ node.date_replied }}</li>
     <li>{{ node.created_by }}</li>
+    {{node.id}}
+    
+    <br/>
 
     {% if not node.is_leaf_node%}
     <ul class="children">

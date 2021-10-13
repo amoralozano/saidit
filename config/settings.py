@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'posts',
     "group",
     "authorization_app",
+    "mptt",
 
 ]
 

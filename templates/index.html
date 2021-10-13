@@ -8,7 +8,7 @@
 
 <ul>
   <li>User: {{post.user}}</li>
-  <li>Body: {{post.body}}</li>
+  <li>Body: <a href="{% url 'post' post.id %} ">{{post.body}}</a></li>
   <li>time created: {{post.time_created}}</li>
   <a href="/follow/{{post.user.id}}/"><button>Follow</button></a>
   <a href="/unfollow/{{post.user.id}}/"><button>Unfollow</button></a>

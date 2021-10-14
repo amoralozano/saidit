@@ -1,0 +1,13 @@
+<h2>heres a list of groups</h2>
+
+{% for group in groups %}
+<ul>
+  <li>{{group}}</li>
+  <li>{{group.group_description}}</li>
+  <li>{{group.member.all}}</li>
+  <li>{{group.member.count}} </li>
+  <a href= {% url "join-group" group.id %}><button>join group</button></a>
+  <a href= {% url "leave-group" group.id %}><button>leave group</button></a>
+
+</ul>
+{% endfor %}

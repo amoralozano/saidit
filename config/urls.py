@@ -28,7 +28,7 @@ urlpatterns = [
     path('addpost/', post_view.addPost),
     path('', post_view.index, name='home'),
     path('admin/', admin.site.urls),
-    path('addgroup/', post_view.addSubgroup),
+    path('addgroup/', views.addSubgroup),
     path('groupdetail/<int:id>/', views.group_detail, name='detail'),
     path('login/', auth_view.login_view, name='login'),
     path('logout/', auth_view.logout_view, name='logout'),

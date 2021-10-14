@@ -23,7 +23,8 @@ from reply import views as reply_view
 
 
 urlpatterns = [
-    path('join/<int:id>/', views.join_group),
+    path('join/<int:id>/', views.join_group, name="join-group"),
+    path("leavegroup/<int:id>/", views.leave_group, name="leave-group"),
     path('addpost/', post_view.addPost),
     path('', post_view.index, name='home'),
     path('admin/', admin.site.urls),
@@ -40,5 +41,6 @@ urlpatterns = [
     path("initiatereply/<int:post_id>/", reply_view.initiate_reply, name="initiate-reply"),
     path('follow/<int:id>/', user_view.follow, name="follow"),
     path('unfollow/<int:id>/', user_view.unfollow, name="follow"),
+    path("groups/", views.GroupListView.as_view(), name="groups"), 
 
 ]

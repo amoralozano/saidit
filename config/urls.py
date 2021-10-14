@@ -23,6 +23,7 @@ from reply import views as reply_view
 
 
 urlpatterns = [
+    path('join/<int:id>/', views.join_group),
     path('addpost/', post_view.addPost),
     path('', post_view.index, name='home'),
     path('admin/', admin.site.urls),

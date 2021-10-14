@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, reverse, redirect
@@ -12,7 +13,7 @@ def group_detail(request, id):
     member_count = SaidItUser.objects.filter(id=id).count()
     return render(request, "group_detail.html", {"group": group, "posts": posts, 'member_count':member_count}) # noqa
 
-
+@login_required
 def join_group(request, id):
     newMember = request.user
     group = SaidItUser.objects.get(id=id)

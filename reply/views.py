@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, reverse
 from .models import Reply
 from django.views.generic import View
@@ -20,7 +21,7 @@ class ReplyDetailView(View):
                     }
         return render(request, template_name, context)
 
-
+@login_required
 def create_reply(request, reply_id):
     reply = Reply.objects.get(id=reply_id)
     if request.method == "POST":
@@ -36,7 +37,7 @@ def create_reply(request, reply_id):
     form = ReplyForm()
     return render(request, "generic_form.html", {"form": form})
 
-
+@login_required
 def initiate_reply(request, post_id):
     post = Post.objects.get(id=post_id)
     if request.method == "POST":

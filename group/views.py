@@ -5,6 +5,7 @@ from .models import SubGroup
 from posts.models import Post
 from saidituser.models import SaidItUser
 from django.views.generic import View
+from .forms import AddSubGroup
 
 
 def group_detail(request, id):
@@ -13,6 +14,20 @@ def group_detail(request, id):
     member_count = SaidItUser.objects.filter(id=id).count()
     return render(request, "group_detail.html", {"group": group, "posts": posts, 'member_count':member_count}) # noqa
 
+
+def addSubgroup(request):
+    user = request.user
+    if request.method == 'POST':
+        form = AddSubGroup(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            SubGroup.objects.create(
+                created_by=user,
+                group_name=data['group_name']
+            )
+        return HttpResponseRedirect(reverse('home'))
+    form = AddSubGroup()
+    return render(request, 'generic_form.html', {'form': form})
 
 def join_group(request, id):
     newMember = request.user

@@ -161,3 +161,4 @@ dmypy.json
 
 .nfs*
 
+db.sqlite3

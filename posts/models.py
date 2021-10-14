@@ -2,6 +2,7 @@ from django.db import models
 from saidituser.models import SaidItUser
 from django.utils import timezone
 from group.models import SubGroup
+from django.contrib.auth.models import User
 
 
 class Post(models.Model):
@@ -10,7 +11,8 @@ class Post(models.Model):
     body = models.CharField(max_length=150)
     time_created = models.DateTimeField(default=timezone.now)
     # notification
-
+    class Meta:
+        ordering = ["-time_created"]
     def __str__(self):
         return self.body
 

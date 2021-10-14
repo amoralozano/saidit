@@ -5,7 +5,7 @@
 <h4>Members: {{member_count}}</h4>
 
 {% if user.username in group.member.all %} {% for post in posts %}
-<h2>{{post}}</h2>
+<h2><a href="{% url 'post' post.id %} ">{{post}}</a></h2>
 {% endfor %} {% else %}
 
 <button>

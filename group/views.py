@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, reverse, redirect
@@ -14,21 +15,21 @@ def group_detail(request, id):
     member_count = SaidItUser.objects.filter(id=id).count()
     return render(request, "group_detail.html", {"group": group, "posts": posts, 'member_count':member_count}) # noqa
 
-
+@login_required
 def addSubgroup(request):
-    user = request.user
     if request.method == 'POST':
         form = AddSubGroup(request.POST)
         if form.is_valid():
             data = form.cleaned_data
             SubGroup.objects.create(
-                created_by=user,
+                created_by=request.user,
                 group_name=data['group_name']
             )
         return HttpResponseRedirect(reverse('home'))
     form = AddSubGroup()
     return render(request, 'generic_form.html', {'form': form})
-
+  
+@login_required
 def join_group(request, id):
     newMember = request.user
     group = SubGroup.objects.get(id=id)

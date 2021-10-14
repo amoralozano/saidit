@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, reverse
 from posts.forms import AddPostForm
@@ -16,7 +17,7 @@ def index(request):
     groups = SubGroup.objects.all()
     return render(request, 'index.html', {'posts': posts, "groups": groups})
 
-
+@login_required
 def addPost(request):
     if request.method == 'POST':
         form = AddPostForm(request.POST)

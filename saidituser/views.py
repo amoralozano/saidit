@@ -1,9 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from saidituser.models import SaidItUser
 from django.contrib.auth.models import User
 from posts.models import Post
 
 # for the user profile view add user, followers and following for it to be able to function # noqa
+@login_required
 def follow(request, id):
     self = request.user
     target = SaidItUser.objects.get(id=id)
@@ -12,7 +14,7 @@ def follow(request, id):
     print("followed")
     return redirect(request.META.get('HTTP_REFERER'))
 
-
+@login_required
 def unfollow(request, id):
     self = request.user
     target = SaidItUser.objects.get(id=id)

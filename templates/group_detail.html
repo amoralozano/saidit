@@ -2,6 +2,16 @@
 
 <h1>{{group.group_name}}</h1>
 
+<h4>Members: {{member_count}}</h4>
+
+{% if user.username in group.member.all %} {% for post in posts %}
+<h2>{{post}}</h2>
+{% endfor %} {% else %}
+
+<button>
+  <a href="/join/{{group.id}}/">JOIN</a>
+</button>
+
 {% for post in posts %}
 <h2>{{post}}</h2>
-{% endfor %}
+{% endfor %} {% endif %}

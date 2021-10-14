@@ -9,6 +9,7 @@ python = "^3.9"
 Django = "^3.2.8"
 django-allauth = "^0.45.0"
 django-mptt = "^0.13.4"
+python-dotenv = "^0.19.1"
 
 [tool.poetry.dev-dependencies]
 

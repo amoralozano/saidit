@@ -1,9 +1,9 @@
-<h1>hello from the post</h1>
 
-<p> {{post}} </p>
-<p> {{post.user}} </p>
-<p> {{post.time_created}}</p>
-<p><a href= {% url 'initiate-reply' post.id %}>reply</a></p>
+<h1>this is a reply!</h1>
+<p> {{init_reply}} </p>
+<p> {{init_reply.created_by}} </p>
+<p> {{init_reply.date_replied}}</p>
+<p><a href= {% url 'new-reply' init_reply.id %}>reply</a></p>
 
 {% load mptt_tags %}
 <ul class="root">

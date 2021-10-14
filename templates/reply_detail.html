@@ -1,8 +1,27 @@
-<h1>Reply!</h1>
 
-<ul>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
+<h1>this is a reply!</h1>
+<p> {{init_reply}} </p>
+<p> {{init_reply.created_by}} </p>
+<p> {{init_reply.date_replied}}</p>
+<p><a href= {% url 'new-reply' init_reply.id %}>reply</a></p>
+
+{% load mptt_tags %}
+<ul class="root">
+  {% recursetree replies %}
+  <li>
+   <a href= {% url 'reply-detail' node.id %}>{{ node.reply_text }}</a>
+    <li>{{ node.created_by }}</li>
+    <li>{{ node.date_replied }}</li>
+    
+    <li><a href= {% url 'new-reply' node.id %}>reply</a></li>
+    
+    <br/>
+
+    {% if not node.is_leaf_node%}
+    <ul class="children">
+      {{ children }}
+    </ul>
+    {% endif %}
+  </li>
+  {% endrecursetree %}
 </ul>

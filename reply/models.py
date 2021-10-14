@@ -16,6 +16,6 @@ class Reply(MPTTModel):
 
 
     class MPTTMeta:
-        order_insertion_by = ["-date_replied"]
+        order_insertion_by = ["date_replied"]
     def __str__(self):
         return str(self.reply_text)

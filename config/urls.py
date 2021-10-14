@@ -33,10 +33,11 @@ urlpatterns = [
     path('signup/', auth_view.signup_view, name='signup'),
     path('accounts/', include('allauth.urls')),
 
-    path("replydetail/<int:reply_id>/", reply_view.ReplyDetailView.as_view(), name="reply-detail"),
     path("post/<int:post_id>/", post_view.PostView.as_view(), name="post"),
-
-    path('signup/', auth_view.signup_view, name='signup'),
+    path("replydetail/<int:reply_id>/", reply_view.ReplyDetailView.as_view(), name="reply-detail"),
+    path("createreply/<int:reply_id>/", reply_view.create_reply, name="new-reply"),
+    path("initiatereply/<int:post_id>/", reply_view.initiate_reply, name="initiate-reply"),
     path('follow/<int:id>/', user_view.follow, name="follow"),
     path('unfollow/<int:id>/', user_view.unfollow, name="follow"),
+
 ]

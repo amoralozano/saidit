@@ -1,4 +1,8 @@
-{% load socialaccount %}
-{% include 'generic_form.html' %}
-<a href="/signup">Sign Up</a>
+{% load static %} {% load socialaccount %} {% include 'generic_form.html' %}
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+  <title>SaidIt</title>
+</head>
+<div>-----</div>
+<a href="/signup"><button class="signupbtn">Sign Up</button></a>
 <a href="{% provider_login_url 'google' %}">Login with Google</a>

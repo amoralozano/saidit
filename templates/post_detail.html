@@ -23,30 +23,21 @@
 <h1>hello from the post</h1>
 {% include "navbar.html" %}
 
-<p> {{post}} </p>
-<p> {{post.user}} </p>
-<p> {{post.time_created}}</p>
-<p><a href= {% url 'initiate-reply' post.id %}>reply</a></p>
 
-{% load mptt_tags %}
-<ul class="root">
-  {% recursetree replies %}
-  <li>
-   <a href= {% url 'reply-detail' node.id %}>{{ node.reply_text }}</a>
-    <li>{{ node.created_by }}</li>
-    <li>{{ node.date_replied }}</li>
-    
-    <li><a href= {% url 'new-reply' node.id %}>reply</a></li>
-    
-    <br/>
 
-    {% if not node.is_leaf_node%}
-    <ul class="children">
-      {{ children }}
-    </ul>
-    {% endif %}
-  </li>
-  {% endrecursetree %}
-</ul>
+ <div class="card" style="width: 18rem; margin: 10px">
+   
+    <div class="card-body">
+      <div style="display: flex; flex-direction: row">
+        <h5 class="card-title">{{post}}  </h5>
+        
+      </div>
+      <p class="card-text">posted by {{post.user}}</p>
+      <p class="card-text">{{post.time_created}}</p>
+      <a href={% url 'initiate-reply' post.id %} class="btn btn-primary">Reply</a>
+      <a href="/command/1/delete" class="btn btn-primary">Delete</a>
+    </div>
+  </div>
+{% include "reply_chain.html" %}
 </body>
 </html>

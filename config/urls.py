@@ -34,7 +34,6 @@ urlpatterns = [
     path('logout/', auth_view.logout_view, name='logout'),
     path('signup/', auth_view.signup_view, name='signup'),
     path('accounts/', include('allauth.urls')),
-
     path("post/<int:post_id>/", post_view.PostView.as_view(), name="post"),
     path("replydetail/<int:reply_id>/", reply_view.ReplyDetailView.as_view(), name="reply-detail"),
     path("createreply/<int:reply_id>/", reply_view.create_reply, name="new-reply"),
@@ -42,5 +41,6 @@ urlpatterns = [
     path('follow/<int:id>/', user_view.follow, name="follow"),
     path('unfollow/<int:id>/', user_view.unfollow, name="follow"),
     path("groups/", views.GroupListView.as_view(), name="groups"), 
+    path("userprofile/<int:id>/", user_view.userview, name="profile"),
 
 ]

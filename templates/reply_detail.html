@@ -21,30 +21,21 @@
 <body>
 <h1>this is a reply!</h1>
 {% include "navbar.html" %}
-<p> {{init_reply}} </p>
-<p> {{init_reply.created_by}} </p>
-<p> {{init_reply.date_replied}}</p>
-<p><a href= {% url 'new-reply' init_reply.id %}>reply</a></p>
+ <div class="card" style="width: 18rem; margin: 10px">
+   
+    <div class="card-body">
+      <div style="display: flex; flex-direction: row">
+        <h5 class="card-title">{{init_reply}} </h5>
+        
+      </div>
+      <p class="card-text">posted by {{init_reply.created_by}} </p>
+      <p class="card-text">{{init_reply.date_replied}}</p>
+      <a href={% url 'new-reply' init_reply.id %} class="btn btn-primary">Reply</a>
+      <a href="/command/1/delete" class="btn btn-primary">Delete</a>
+    </div>
+  </div>
 
-{% load mptt_tags %}
-<ul class="root">
-  {% recursetree replies %}
-  <li>
-   <a href= {% url 'reply-detail' node.id %}>{{ node.reply_text }}</a>
-    <li>{{ node.created_by }}</li>
-    <li>{{ node.date_replied }}</li>
-    
-    <li><a href= {% url 'new-reply' node.id %}>reply</a></li>
-    
-    <br/>
-
-    {% if not node.is_leaf_node%}
-    <ul class="children">
-      {{ children }}
-    </ul>
-    {% endif %}
-  </li>
-  {% endrecursetree %}
-</ul>
+</div>
+{% include "reply_chain.html" %}
 </body>
 </html>

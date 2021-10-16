@@ -1,5 +1,14 @@
+<h1>{{user}}'s Profile</h1>
 
-<h1>User Profile</h1>
+{% if user.username == request.user.username %}
+
+<button>
+  <a href="/">Home</a>
+</button>
+
+<button>
+  <a href="/userdetail/{{user.id}}/edit/">Edit Profile</a>
+</button>
 
 <p>User: {{user}}</p>
 
@@ -7,10 +16,42 @@
 
 <p>Bio: {{user.bio}}</p>
 
+<p><a href="/followers/{{user.id}}/">Followers:</a> {{followers_count}}</p>
+<p><a href="/following/{{user.id}}/">Following:</a> {{following_count}}</p>
+<p>Groups: {% for group in groups %}</p>
+<li><a href="/groupdetail/{{group.id}}/">{{group.group_name}}</a></li>
+{% endfor %}
+<ul>
+  {% for post in posts %}
+  <li><a href="/post/{{post.id}}/">{{post.body}}</a></li>
+  {% endfor %}
+</ul>
 
+{% else %}
 
+<button>
+  <a href="/follow/{{user.id}}">Follow</a>
+</button>
 
+<button>
+  <a href="/unfollow/{{user.id}}">Unfollow</a>
+</button>
 
+<p>User: {{user}}</p>
 
+<p>Age: {{user.age}}</p>
 
+<p>Bio: {{user.bio}}</p>
 
+<p><a href="/followers/{{user.id}}/">Followers:</a> {{followers_count}}</p>
+<p><a href="/following/{{user.id}}/">Following:</a> {{following_count}}</p>
+<p>Groups: {% for group in groups %}</p>
+<li><a href="/groupdetail/{{group.id}}/">{{group.group_name}}</a></li>
+{% endfor %}
+<ul>
+  {% for post in posts %}
+  <li><a href="/post/{{post.id}}/">{{post.body}}</a></li>
+  {% endfor %}
+</ul>
+
+{% endif %}

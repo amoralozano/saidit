@@ -15,3 +15,6 @@ class SaidItUser(AbstractUser):
     # friends or followers
     # followers / friends count
     # favorites
+
+    def __str__(self):
+        return self.display_name

@@ -11,14 +11,15 @@ from django.views.generic import View
 from reply.models import Reply
 
 
-
 def index(request):
     posts = Post.objects.all()
     groups = SubGroup.objects.all()
     return render(request, 'index.html', {'posts': posts, "groups": groups})
 
+
 @login_required
-def addPost(request):
+def addPost(request, id):
+    group = SubGroup.objects.get(id=id)
     if request.method == 'POST':
         form = AddPostForm(request.POST)
         if form.is_valid():
@@ -26,12 +27,11 @@ def addPost(request):
             Post.objects.create(
                 user=request.user,
                 body=data['body'],
-                posted_in=data['posted_in']
+                posted_in=group
             )
         return HttpResponseRedirect(reverse('home'))
     form = AddPostForm()
-    return render(request, 'generic_form.html', {'form': form})
-
+    return render(request, 'addpost.html', {'form': form, 'group': group})
 
 
 class PostView(View):

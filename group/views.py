@@ -15,6 +15,7 @@ def group_detail(request, id):
     member_count = SaidItUser.objects.filter(id=id).count()
     return render(request, "group_detail.html", {"group": group, "posts": posts, 'member_count':member_count}) # noqa
 
+
 @login_required
 def addSubgroup(request):
     if request.method == 'POST':
@@ -27,8 +28,9 @@ def addSubgroup(request):
             )
         return HttpResponseRedirect(reverse('home'))
     form = AddSubGroup()
-    return render(request, 'generic_form.html', {'form': form})
-  
+    return render(request, 'addgroup.html', {'form': form})
+
+
 @login_required
 def join_group(request, id):
     newMember = request.user
@@ -51,4 +53,4 @@ def leave_group(request, id):
 class GroupListView(View):
     def get(self, request):
         groups = SubGroup.objects.all()
-        return render(request, "group_list.html", {"groups": groups})
+        return render(request, "group_list.html", {"groups": groups}) # noqa

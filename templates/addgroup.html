@@ -1,4 +1,4 @@
-{% load static %} {% load socialaccount %}
+{% load static %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,7 +7,6 @@
       type="text/css"
       href="{% static 'css/style.css' %}"
     />
-    <link rel="stylesheet" type="text/css" href="style.css"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -20,43 +19,31 @@
   </head>
 
   <body>
-      <h1>Log-In</h1>
+      <h1>Lets Add A Group!</h1>
     {% block content %}
     <form action="" method="post">
       {% csrf_token %}
 
       <div class="card">
-        <h5 class="card-header">Login:</h5>
+        <div class="card-header">
+          Want To Create A Group?
+        </div>
         <div class="card-body">
             <div class="form-group">
-                <label for="exampleInputEmail1">Username</label>
+                <label for="exampleInputEmail1">Group Name</label>
                 <input
                   type="text"
                   class="form-control"
-                  name="username"
+                  name="group_name"
                   placeholder="Enter UserName"
                 />
               </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input
-                  type="password"
-                  class="form-control"
-                  name="password"
-                  placeholder="Password"
-                />
-              </div>
-              <h6>Other Options:</h6>
-              <a href="{% provider_login_url 'google' %}">Login with Google</a> 
-              <h6>Or Sign Up:<h6>
-                  <a href="/signup"><button class="btn btn-primary">Sign Up</button></a>
               <br></br>
               <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
         </div>
-        <br></br>
+      </div>
+      <br></br>
     </form>
     {% endblock %}
-    <br></br>
   </body>
 </html>

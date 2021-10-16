@@ -25,7 +25,7 @@ from reply import views as reply_view
 urlpatterns = [
     path('join/<int:id>/', views.join_group, name="join-group"),
     path("leavegroup/<int:id>/", views.leave_group, name="leave-group"),
-    path('addpost/', post_view.addPost),
+    path('addpost/<int:id>/', post_view.addPost),
     path('', post_view.index, name='home'),
     path('admin/', admin.site.urls),
     path('addgroup/', views.addSubgroup),

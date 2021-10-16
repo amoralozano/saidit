@@ -25,7 +25,7 @@
 
     <h4>Members: {{member_count}}</h4>
 
-    {% if user.username in group.member.all %} {% for post in posts %}
+    {% if user in group.member %} {% for post in posts %}
     <p><a href="{% url 'post' post.id %} ">{{post}}</a></p>
     {% endfor %} {% else %}
 

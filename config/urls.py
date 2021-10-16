@@ -23,6 +23,8 @@ from reply import views as reply_view
 
 
 urlpatterns = [
+    path('userdetail/<int:id>/edit/', user_view.edit_userview),
+    path('userdetail/<int:id>/', user_view.userview, name='user_detail'),
     path('join/<int:id>/', views.join_group, name="join-group"),
     path("leavegroup/<int:id>/", views.leave_group, name="leave-group"),
     path('addpost/<int:id>/', post_view.addPost),
@@ -38,6 +40,8 @@ urlpatterns = [
     path("replydetail/<int:reply_id>/", reply_view.ReplyDetailView.as_view(), name="reply-detail"),
     path("createreply/<int:reply_id>/", reply_view.create_reply, name="new-reply"),
     path("initiatereply/<int:post_id>/", reply_view.initiate_reply, name="initiate-reply"),
+    path("followers/<int:id>/", user_view.FollowerList.as_view()),
+    path("following/<int:id>/", user_view.FollowingList.as_view()),
     path('follow/<int:id>/', user_view.follow, name="follow"),
     path('unfollow/<int:id>/', user_view.unfollow, name="follow"),
     path("groups/", views.GroupListView.as_view(), name="groups"), 

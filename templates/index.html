@@ -22,11 +22,13 @@
 
   <body>
     <h1 class="title">Welcome to Said-It, the backend of the internet!</h1>
+
     {% include "navbar.html" %}
     <h4>recent posts</h4>
     {% for post in posts %}
 
     <ul>
+      {{post.user}}
       <li>User: <a href="/userdetail/{{post.user.id}}/">{{post.user}}</a></li>
       <li>Body: <a href="{% url 'post' post.id %} ">{{post.body}}</a></li>
       <li>time created: {{post.time_created}}</li>

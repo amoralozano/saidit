@@ -13,7 +13,7 @@ def signup_view(request):
             user.objects.create_user(display_name=data['display_name'], username=data['username'], password=data['password']) # noqa
             return HttpResponseRedirect(reverse('home'))
     form = SignupForm()
-    return render(request, 'generic_form.html', {'form': form})
+    return render(request, 'login.html', {'form': form})
 
 
 def login_view(request):

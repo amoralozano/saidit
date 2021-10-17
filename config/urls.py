@@ -20,6 +20,7 @@ from group import views
 from saidituser import views as user_view
 from authorization_app import views as auth_view
 from reply import views as reply_view
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 urlpatterns = [
@@ -48,3 +49,5 @@ urlpatterns = [
     path("userprofile/<int:id>/", user_view.userview, name="profile"),
 
 ]
+
+urlpatterns += staticfiles_urlpatterns()

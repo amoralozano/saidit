@@ -34,10 +34,6 @@
       <li>time created: {{post.time_created}}</li>
       <a href="/follow/{{post.user.id}}/"><button>Follow</button></a>
       <a href="/unfollow/{{post.user.id}}/"><button>Unfollow</button></a>
-      <h3>Followers:</h3>
-      <p>{{user.followers.count}}</p>
-      <h3>Following:</h3>
-      <p>{{user.following.count}}</p>
       <li>
         <a href="/groupdetail/{{post.posted_in.id}}/"
           >Group: {{post.posted_in}}</a

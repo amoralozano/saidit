@@ -19,22 +19,61 @@
     <title>SaidIt</title>
   </head>
   <body>
-    <h1>This is the group detail page!</h1>
+    <h1>This is the {{group}} detail page!</h1>
     {% include "navbar.html" %}
-    <h4>{{group.group_name}}</h4>
 
-    <h4>Members: {{member_count}}</h4>
-
-    {% if user in group.member %} {% for post in posts %}
-    <p><a href="{% url 'post' post.id %} ">{{post}}</a></p>
-    {% endfor %} {% else %}
-
-    <button>
-      <a href="/join/{{group.id}}/">JOIN</a>
-    </button>
-
+   
+      
+    Members: {{group.member.count}}
+    <div>
+    {% if user in group.member.all %}
+    <a href= {% url 'new-post' group.id %}><button>add post</button></a>
+    <a href={% url 'leave-group' group.id %}><button>LEAVE GROUP</button></a>
+    {% else %}
+    <a href="/join/{{group.id}}/"><button>JOIN</button></a>
+    {% endif %}
+    {% if group.group_description %}
+    {{group.group_description}}
+    </div>
+    {% else %}
+    <div>
+    There is no description for this group
+    </div>
+    {% endif %}
+  {% if posts %}
+    
     {% for post in posts %}
-    <h2>{{post}}</h2>
-    {% endfor %} {% endif %}
+   
+    <div class="card" style="width: 18rem; margin: 10px">
+   
+    <div class="card-body">
+      <div style="display: flex; flex-direction: row">
+        <h5 class="card-title">{{post}} </h5>
+        
+      </div>
+      <p class="card-text">posted by {{post.user}} </p>
+      <p class="card-text">{{post.time_created}}</p>
+    
+    <a href= {% url 'post' post.id %}class="btn btn-primary">
+      <button type="button" class="btn btn-primary position-relative">
+  go to post
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+          {{post.replies.count}}
+          <span class="visually-hidden">
+            Replies
+          </span>
+        </span>
+      </button>
+    </a>
+      {% if user in group.member.all %}
+      <a href={% url 'initiate-reply' post.id %} class="btn btn-primary">Reply</a>
+      {% endif %}
+      <a href="/command/1/delete" class="btn btn-primary">Delete</a>
+    </div>
+  </div>
+    {% endfor %} 
+    {% else %}
+    NO ONE HAS POSTED IN {{group}} yet
+  {% endif %}
   </body>
 </html>

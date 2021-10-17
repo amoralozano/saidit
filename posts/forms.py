@@ -5,5 +5,4 @@ from group.models import SubGroup
 
 class AddPostForm(forms.Form):
     body = forms.CharField(max_length=150)
-    posted_in = forms.ModelChoiceField(queryset=SubGroup.objects.all())
 

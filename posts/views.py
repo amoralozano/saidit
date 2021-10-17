@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponseRedirect
-from django.shortcuts import render, reverse
+from django.shortcuts import render, reverse, redirect
 from posts.forms import AddPostForm
 from posts.models import Post
 from saidituser.models import SaidItUser
@@ -29,7 +29,7 @@ def addPost(request, id):
                 body=data['body'],
                 posted_in=group
             )
-        return HttpResponseRedirect(reverse('home'))
+        return redirect("group-detail", group.id)
     form = AddPostForm()
     return render(request, 'addpost.html', {'form': form, 'group': group})
 

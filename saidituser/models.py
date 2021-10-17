@@ -10,6 +10,7 @@ class SaidItUser(AbstractUser):
     bio = models.TextField(null=True, blank=False)
     
     following = models.ManyToManyField("self", blank =True, related_name="followers", symmetrical=False) # noqa
+    image = models.ImageField(default='default.jpeg', upload_to='profile_pic')
     # notifications
     # display picture
     # friends or followers

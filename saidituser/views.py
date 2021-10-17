@@ -47,19 +47,21 @@ def edit_userview(request, id):
     user = SaidItUser.objects.get(id=id)
     
     if request.method == 'POST':
-        form = EditProfileForm(request.POST)
+        form = EditProfileForm(request.POST, request.FILES)
         if form.is_valid():
             data = form.cleaned_data
             user.display_name = data['display_name']
             user.age = data['age']
             user.bio = data['bio']
+            user.image = data['image']
             user.save()
             return HttpResponseRedirect(reverse('user_detail', args=(id,)))
 
     form = EditProfileForm(initial={
         'display_name': user.display_name,
         'age': user.age,
-        'bio': user.bio
+        'bio': user.bio,
+        'image': user.image
     })
     return render(request, 'generic_form.html', {'form':form})
 

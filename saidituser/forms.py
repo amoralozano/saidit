@@ -11,10 +11,10 @@ class UserProfile(forms.ModelForm):
     # bio = forms.CharField(widget=forms.TextInput, null=True, blank=False)
     class Meta:
         model = SaidItUser
-        fields = ['display_name', 'age', 'bio']
+        fields = ['display_name', 'age', 'bio', 'image']
 
 class EditProfileForm(forms.ModelForm):
     class Meta:
         model = SaidItUser
-        fields = ['display_name', 'age', 'bio']
+        fields = ['display_name', 'age', 'bio', 'image']
    

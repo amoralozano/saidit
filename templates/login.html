@@ -2,11 +2,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'css/style.css' %}"
-    />
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -17,43 +12,70 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
   </head>
 
-  <body>
-      <h1>Log-In</h1>
+  <body style="background-color: #5e63b6;">
+      <h1 class="login" style="text-align: center; font-family: 'Bebas Neue', cursive; font-size: 100px;">Welcome To SaidIt!</h1>
     {% block content %}
     <form action="" method="post">
       {% csrf_token %}
 
-      <div class="card">
-        <h5 class="card-header">Login:</h5>
+      <div class="d-flex justify-content-center">
+
+    <div style="text-align: center;">
+      <div class="card" style=" width: 800px; height: 450px; background-color: #e0ebeb; border-color: black;">
+        <h5 class="card-header" style="text-align: center; background-color: #a393eb; border-color: black; font-family: 'Source Code Pro', monospace;">Login</h5>
         <div class="card-body">
             <div class="form-group">
-                <label for="exampleInputEmail1">Username</label>
+                <label for="exampleInputEmail1" style="font-family: 'Source Code Pro', monospace;">Username</label>
                 <input
                   type="text"
                   class="form-control"
                   name="username"
                   placeholder="Enter UserName"
+                  style="text-align: center;
+                  background-color: lightgray;
+                  margin-bottom: 5px;
+                  border-color: black;";
+                  
                 />
               </div>
               <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
+                <label for="exampleInputPassword1" style="font-family: 'Source Code Pro', monospace;">Password</label>
                 <input
                   type="password"
                   class="form-control"
                   name="password"
                   placeholder="Password"
+                  style="text-align: center;
+                  background-color: lightgray;
+                  margin-bottom: 5px;
+                  border-color: black;"
                 />
               </div>
-              <h6>Other Options:</h6>
-              <a href="{% provider_login_url 'google' %}">Login with Google</a> 
-              <h6>Or Sign Up:<h6>
-                  <a href="/signup"><button class="btn btn-primary">Sign Up</button></a>
-              <br></br>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary" style="margin-top: 15px; background-color: #f5c7f7; border-color: black; color: black">Submit</button>
+              </div>
+              <div>
+              <hr></hr>
+              </div>
+              <h6 style="text-align: center; font-family: 'Source Code Pro', monospace;">Other Options:</h6>
+              <a href="{% provider_login_url 'google' %}"><img src= "/static/css/sign_in_google.png" alt="sign_in with google button" style="margin-bottom: 5px;"></a>
+              <h6 style="text-align: center; font-family: 'Source Code Pro', monospace;">Or Sign Up:<h6>
+                <div class="col-md-12 text-center">
+                  <a href="/signup"><button class="btn btn-primary" style="align-self: center; background-color: #f5c7f7; border-color: black; color: black">Sign Up</button></a>
+                  <br></br>
+              </div>
             </div>
         </div>
+    </div>
         <br></br>
     </form>
     {% endblock %}

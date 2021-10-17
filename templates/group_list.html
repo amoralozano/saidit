@@ -21,16 +21,37 @@
 <body>
 <h1>heres a list of groups</h1>
 {% include "navbar.html" %}
-{% for group in groups %}
-<ul>
-  <li>{{group}}</li>
-  <li>{{group.group_description}}</li>
-  <li>{{group.member.all}}</li>
-  <li>{{group.member.count}} </li>
-  <a href= {% url "join-group" group.id %}><button>join group</button></a>
-  <a href= {% url "leave-group" group.id %}><button>leave group</button></a>
 
-</ul>
-{% endfor %}
+
+
+{% for group in groups %}
+   
+    <div class="card" style="width: 18rem; margin: 10px">
+   
+    <div class="card-body">
+      <div style="display: flex; flex-direction: row">
+        <a href= {% url 'group-detail' group.id %}><h5 class="card-title">{{group}}</h5></a>
+        
+      </div>
+      <p class="card-text">created by {{group.created_by}} </p>
+      <p class="card-text">Founded at {{group.time_created}}</p>
+      <p class="card-text">{{group.member.count}} 
+      {% if group.member.count == 1 %}
+      member
+      {% else %}
+      members 
+      {% endif %}
+      </p>
+    
+    
+      {% if user in group.member.all %}
+      <a href={% url 'leave-group' group.id %} class="btn btn-primary">leave group</a>
+      {% else %}
+      <a href={% url 'join-group' group.id %} class="btn btn-primary">join group</a>
+      {% endif %}
+      <a href="/command/1/delete" class="btn btn-primary">Delete</a>
+    </div>
+  </div>
+    {% endfor %} 
 </body>
 </html>

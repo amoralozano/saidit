@@ -16,31 +16,47 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
+
   </head>
 
-  <body>
-      <h1>Lets Add A Group!</h1>
+  <body style="background-color: #5e63b6;">
+      {% include "navbar.html" %}
+      <br></br>
     {% block content %}
     <form action="" method="post">
       {% csrf_token %}
-
-      <div class="card">
-        <div class="card-header">
-          Want To Create A Group?
+      <h1 style="text-align: center; font-family: 'Bebas Neue', cursive; font-size: 100px; color: black;">Lets Add A Group!</h1>
+        <div class="d-flex justify-content-center">
+          <div style="text-align: center;">
+      <div class="card" style=" width: 800px; height: 250px; border-radius: 10px; background-color: #e0ebeb; border-color: black;">
+        <div class="card-header" style="text-align: center; background-color: #a393eb; border-color: black; font-family: 'Source Code Pro', monospace;">
+          Add A Group Below!
         </div>
         <div class="card-body">
             <div class="form-group">
-                <label for="exampleInputEmail1">Group Name</label>
+                <label for="exampleInputEmail1" style="font-family: 'Source Code Pro', monospace;">Group Name</label>
                 <input
                   type="text"
                   class="form-control"
                   name="group_name"
-                  placeholder="Enter UserName"
+                  placeholder="Enter New Group Name"
+                  style="background-color: lightgray;
+                  text-align: center;
+                  border-color: black;"
                 />
               </div>
-              <br></br>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary" style="width: 100px; margin-top: 35px; background-color: #f5c7f7; border-color: black; color: black;">Submit</button>
+              </div>
         </div>
+      </div>
       </div>
       <br></br>
     </form>

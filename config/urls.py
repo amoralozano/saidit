@@ -22,6 +22,7 @@ from group import views
 from saidituser import views as user_view
 from authorization_app import views as auth_view
 from reply import views as reply_view
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 urlpatterns = [
@@ -29,11 +30,11 @@ urlpatterns = [
     path('userdetail/<int:id>/', user_view.userview, name='user_detail'),
     path('join/<int:id>/', views.join_group, name="join-group"),
     path("leavegroup/<int:id>/", views.leave_group, name="leave-group"),
-    path('addpost/<int:id>/', post_view.addPost),
+    path('addpost/<int:id>/', post_view.addPost, name="new-post"),
     path('', post_view.index, name='home'),
     path('admin/', admin.site.urls),
     path('addgroup/', views.addSubgroup),
-    path('groupdetail/<int:id>/', views.group_detail, name='detail'),
+    path('groupdetail/<int:id>/', views.group_detail, name='group-detail'),
     path('login/', auth_view.login_view, name='login'),
     path('logout/', auth_view.logout_view, name='logout'),
     path('signup/', auth_view.signup_view, name='signup'),
@@ -50,3 +51,6 @@ urlpatterns = [
     path("userprofile/<int:id>/", user_view.userview, name="profile"),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+urlpatterns += staticfiles_urlpatterns()

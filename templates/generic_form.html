@@ -20,7 +20,7 @@
 
   <body>
     {% block content %}
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
       {% csrf_token %} {{ form|crispy }}
       <div>-----</div>
       <button type="submit" value="Submit" class="btn btn-success">

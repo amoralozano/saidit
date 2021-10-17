@@ -1,5 +1,9 @@
 <h1>{{user}}'s Profile</h1>
 
+<div>
+  <img class="user-img" src="{{ user.image.url }}" />
+</div>
+
 {% if user.username == request.user.username %}
 
 <button>

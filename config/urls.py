@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin, auth
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 from posts import views as post_view
 from group import views
 from saidituser import views as user_view
@@ -47,4 +49,4 @@ urlpatterns = [
     path("groups/", views.GroupListView.as_view(), name="groups"), 
     path("userprofile/<int:id>/", user_view.userview, name="profile"),
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

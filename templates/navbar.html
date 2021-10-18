@@ -1,5 +1,5 @@
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: #cb9bba;">
       <div class="container-fluid">
         <a class="navbar-brand" href= {% url 'home' %}>SaidIt</a>
         <button
@@ -16,27 +16,24 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">Home</a>
+              <a class="nav-link active" aria-current="page" style="color: white;" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/addpost/">Add Posts</a>
+              <a class="nav-link" href="/addgroup" style="color: white;">Add Group</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/addgroup">Add Group</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/groups">Groups</a>
+              <a class="nav-link" href="/groups" style="color: white;">Groups</a>
             </li>
             {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="/logout">Logout</a>
+              <a class="nav-link" href="/logout" style="color: white;">Logout</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href= {% url 'profile' user.id%}>Profile</a>
+              <a class="nav-link" style="color: white;" href= {% url 'profile' user.id%}>Profile</a>
             </li>
             {% else %}
              <li class="nav-item">
-              <a class="nav-link" href="/login">Login</a>
+              <a class="nav-link" style="color: white;" href="/login">Login</a>
             </li>
             {% endif %}
             </li>

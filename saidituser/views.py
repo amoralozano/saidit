@@ -78,4 +78,9 @@ class FollowerList(View):
 
 
 def handle_not_found(request, exception):
-    return render(request, 'not-found.html')
+    data = {}
+    return render(request, 'not-found.html', data )
+
+def error_500(request):
+    data = {}
+    return render(request,'500.html', data)

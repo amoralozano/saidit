@@ -3,7 +3,7 @@ from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, reverse, redirect
 from posts.forms import AddPostForm
 from posts.models import Post
-from saidituser.models import SaidItUser
+from saidituser.models import SaidItUser as user
 from group.forms import AddSubGroup
 from group.models import SubGroup
 from django.views.generic import View
@@ -41,3 +41,28 @@ class PostView(View):
         replies = Reply.objects.filter(replied_to=post_id)
         context = {"post": post, "replies": replies}
         return render(request, template_name, context)
+
+
+def upvote_view(request, id):
+    rate = Post.objects.get(id=id)
+    rate.like_count += 1
+    rate.save()
+    return HttpResponseRedirect("/")
+
+
+def downvote_view(request, id):
+    rate = Post.objects.get(id=id)
+    rate.down_votes += 1
+    rate.save()
+    return HttpResponseRedirect("/")
+
+
+
+def like_count(request):
+    rate= Post.objects.filter(like_dislike=True).order_by('-time_submitted')
+    return render(request, 'index.html', {'rate': rate})
+
+
+def dislike_count(request):
+    rate= Post.objects.filter(like_dislike=False).order_by('-time_submitted')
+    return render(request, 'index.html', {'rate': rate})

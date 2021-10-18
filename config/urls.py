@@ -54,3 +54,7 @@ urlpatterns = [
 
 
 urlpatterns += staticfiles_urlpatterns()
+
+
+handler404 = "saidituser.views.handle_not_found"
+handler500 = "saidituser.views.error_500"

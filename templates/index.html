@@ -17,29 +17,55 @@
       crossorigin="anonymous"
     />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Code+Pro:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Code+Pro:wght@500&family=Teko&display=swap" rel="stylesheet">
+
     <title>SaidIt</title>
   </head>
 
-  <body>
-    <h1 class="title">Welcome to Said-It, the backend of the internet!</h1>
-
+  <body style="background-color: #5e63b6">
     {% include "navbar.html" %}
-    <h4>recent posts</h4>
-    {% for post in posts %}
+    <h1
+      class="title"
+      style="
+        text-align: center;
+        font-family: 'Bebas Neue', cursive;
+        font-size: 100px;
+        margin-top: 25px;
+      "
+    >
+      Welcome to Said-It!!
+    </h1>
 
-    <ul>
-      {{post.user}}
-      <li>User: <a href="/userdetail/{{post.user.id}}/">{{post.user}}</a></li>
-      <li>Body: <a href="{% url 'post' post.id %} ">{{post.body}}</a></li>
-      <li>time created: {{post.time_created}}</li>
-      <a href="/follow/{{post.user.id}}/"><button>Follow</button></a>
-      <a href="/unfollow/{{post.user.id}}/"><button>Unfollow</button></a>
-      <li>
-        <a href="/groupdetail/{{post.posted_in.id}}/"
-          >Group: {{post.posted_in}}</a
-        >
-      </li>
-    </ul>
+    <p style="font-family: 'Bebas Neue', cursive; font-size: 75px; margin-top: 45px; color: white; border-color: black; margin-left: 25px;">{{user}}'s Feed</p>
+    {% for post in posts %}
+    <div class="card-deck">
+      <div class="card" style="width: 800px; margin-bottom: 30px; margin-left: 25px; border-color: black; background-color: #e0ebeb ">
+        <div class="card-header" style="background-color: #a393eb; font-size: 25px; border-color: black; font-family: 'Source Code Pro', monospace;">
+          <button type="button" class="btn btn-light" style="font-family: 'Source Code Pro', monospace; background-color: #a393eb; border-color: #a393eb; width: 120px; font-size: 20px;">{{post.user}}</button>
+        </div>
+        <div class="card-body">
+          <p class="card-text"><a href="{% url 'post' post.id %} "><button type="button" class="btn btn-light" style="border-color: black; width: 600px;">{{post.body}}</button></a></p>
+          <p><a href="/groupdetail/{{post.posted_in.id}}/"><button type="button" class="btn btn-dark" style="border-color: #a393eb;">Group: {{post.posted_in}}</button></a></p>
+          <a href="/follow/{{post.user.id}}/"><button style="width: 100px; background-color: #f48db4; border-color: black; color: black; border-radius: 5px;">Follow</button></a>
+          <a href="/unfollow/{{post.user.id}}/"><button style="width: 100px; background-color: #f5c7f7; border-color: black; color: black; border-radius: 5px;">Unfollow</button></a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted"> posted-on: {{post.time_created}}</small>
+        </div>
+      </div>
 
     {% endfor %}
 

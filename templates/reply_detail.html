@@ -51,6 +51,7 @@
           <p class="card-text"><a href={% url 'reply-detail' init_reply.id %}>
             <button type="button" class="btn btn-light" style="border-color: black; width: 600px;">
             {{init_reply}}</button></a></p>
+            
           <p><a href="/groupdetail/{{init_reply.replied_to.posted_in.id}}/">
           <button type="button" class="btn btn-dark" style="border-color: #a393eb;">
           Group: {{init_reply.replied_to.posted_in}}</button></a></p>
@@ -59,6 +60,7 @@
           Reply</button></a>
           <a href=#><button style="width: 100px; background-color: #f5c7f7; border-color: black; color: black; border-radius: 5px;">
           Delete</button></a>
+          
         </div>
         <div class="card-footer">
           <small class="text-muted"> posted-on: {{init_reply.date_replied}}</small>

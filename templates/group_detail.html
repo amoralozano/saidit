@@ -54,7 +54,7 @@
       <p class="card-text">posted by {{post.user}} </p>
       <p class="card-text">{{post.time_created}}</p>
     
-    <a href= {% url 'post' post.id %}class="btn btn-primary">
+    <a href= {% url 'post' post.id %}>
       <button type="button" class="btn btn-primary position-relative">
   go to post
         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">

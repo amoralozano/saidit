@@ -27,7 +27,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('userdetail/<int:id>/edit/', user_view.edit_userview),
-    path('userdetail/<int:id>/', user_view.userview, name='user_detail'),
+    path('userdetail/<int:id>/', user_view.userview, name='user-detail'),
     path('join/<int:id>/', views.join_group, name="join-group"),
     path("leavegroup/<int:id>/", views.leave_group, name="leave-group"),
     path('addpost/<int:id>/', post_view.addPost, name="new-post"),
@@ -44,6 +44,8 @@ urlpatterns = [
     path("createreply/<int:reply_id>/", reply_view.create_reply, name="new-reply"),
     path("initiatereply/<int:post_id>/", reply_view.initiate_reply, name="initiate-reply"),
     path("followers/<int:id>/", user_view.FollowerList.as_view()),
+    path("<int:id>/like/", post_view.like_count),
+    path("<int:id>/dislike/", post_view.dislike_count),
     path("following/<int:id>/", user_view.FollowingList.as_view()),
     path('follow/<int:id>/', user_view.follow, name="follow"),
     path('unfollow/<int:id>/', user_view.unfollow, name="follow"),

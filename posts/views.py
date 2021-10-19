@@ -43,26 +43,16 @@ class PostView(View):
         return render(request, template_name, context)
 
 
-def upvote_view(request, id):
+def like_count(request, id):
     rate = Post.objects.get(id=id)
     rate.like_count += 1
     rate.save()
-    return HttpResponseRedirect("/")
+    return HttpResponseRedirect(reverse('post', args=[id]))
 
 
-def downvote_view(request, id):
+def dislike_count(request, id):
     rate = Post.objects.get(id=id)
-    rate.down_votes += 1
+    rate.dislike_count -= 1
     rate.save()
-    return HttpResponseRedirect("/")
+    return HttpResponseRedirect(reverse('post', args=[id]))
 
-
-
-def like_count(request):
-    rate= Post.objects.filter(like_dislike=True).order_by('-time_submitted')
-    return render(request, 'index.html', {'rate': rate})
-
-
-def dislike_count(request):
-    rate= Post.objects.filter(like_dislike=False).order_by('-time_submitted')
-    return render(request, 'index.html', {'rate': rate})

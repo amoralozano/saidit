@@ -27,7 +27,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('userdetail/<int:id>/edit/', user_view.edit_userview),
-    path('userdetail/<int:id>/', user_view.userview, name='user_detail'),
+    path('userdetail/<int:id>/', user_view.userview, name='user-detail'),
     path('join/<int:id>/', views.join_group, name="join-group"),
     path("leavegroup/<int:id>/", views.leave_group, name="leave-group"),
     path('addpost/<int:id>/', post_view.addPost, name="new-post"),

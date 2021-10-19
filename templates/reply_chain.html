@@ -22,17 +22,33 @@
 {% load mptt_tags %}
 <ul class="root">
   {% recursetree replies %}
-  <li><div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">{{ node.reply_text }}</h5>
-    
-    <p class="card-text">posted by {{ node.created_by }}</p>
-    <p class="card-text">{{ node.date_replied }}</p>
-    
-    <a href={% url 'reply-detail' node.id %} class="btn btn-success">Go to Post</a>
-    <a href={% url 'new-reply' node.id %} class="btn btn-secondary">Reply to this</a>
-  </div>
-</div> 
+  
+  <li>
+  <div class="card-deck">
+      <div class="card" style="width: 800px; margin-bottom: 30px; margin-left: 25px; border-color: black; background-color: #e0ebeb ">
+        <div class="card-header" style="background-color: #a393eb; font-size: 25px; border-color: black; font-family: 'Source Code Pro', monospace;">
+          <a href= {% url 'user-detail' node.created_by.id %}>
+          <button type="button" class="btn btn-light" style="font-family: 'Source Code Pro', monospace; background-color: #a393eb; border-color: #a393eb; width: 120px; font-size: 20px;">
+          {{node.created_by}} </button>
+        </a></div>
+        <div class="card-body">
+          <p class="card-text"><a href={% url 'reply-detail' node.id %}>
+            <button type="button" class="btn btn-light" style="border-color: black; width: 600px;">
+            {{node}}</button></a></p>
+          <p><a href="/groupdetail/{{node.replied_to.posted_in.id}}/">
+          <button type="button" class="btn btn-dark" style="border-color: #a393eb;">
+          Group: {{node.replied_to.posted_in}}</button></a></p>
+          <a href={% url 'new-reply' node.id %}>
+          <button style="width: 100px; background-color: #f48db4; border-color: black; color: black; border-radius: 5px;">
+          Reply</button></a>
+          <a href=#><button style="width: 100px; background-color: #f5c7f7; border-color: black; color: black; border-radius: 5px;">
+          Delete</button></a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted"> posted-on: {{node.date_replied}}</small>
+        </div>
+      </div>
+
      <br/>
     {% if not node.is_leaf_node%}
     <ul class="children">

@@ -12,6 +12,8 @@ class Reply(MPTTModel):
     created_by = models.ForeignKey(SaidItUser,default= timezone.now, on_delete=models.CASCADE)
     replied_to = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="replies")
     parent = TreeForeignKey("self", on_delete=models.CASCADE,null=True, blank=True, related_name='children')
+    like_dislike = models.BooleanField(default=False, choices=((True, 'like'), (False, 'dislike'))
+    )
     # like/dislike?
 
 

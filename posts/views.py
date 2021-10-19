@@ -42,14 +42,14 @@ class PostView(View):
         context = {"post": post, "replies": replies}
         return render(request, template_name, context)
 
-
+@login_required
 def like_count(request, id):
     rate = Post.objects.get(id=id)
     rate.like_count += 1
     rate.save()
     return HttpResponseRedirect(reverse('post', args=[id]))
 
-
+@login_required
 def dislike_count(request, id):
     rate = Post.objects.get(id=id)
     rate.dislike_count -= 1

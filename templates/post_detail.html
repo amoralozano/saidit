@@ -1,4 +1,5 @@
 {% load static %}
+<!DOCTYPE html>
 <html>
   <head>
     <link
@@ -16,31 +17,52 @@
       crossorigin="anonymous"
     />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Code+Pro:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Code+Pro:wght@500&family=Teko&display=swap" rel="stylesheet">
+
     <title>Post Detail</title>
   </head>
-<body>
+<body style="background-color: #5e63b6">
 
-<h1>hello from the post</h1>
 {% include "navbar.html" %}
+<h1 class="title"
+      style="
+        text-align: center;
+        font-family: 'Bebas Neue', cursive;
+        font-size: 100px;
+        margin-top: 25px;
+      ">hello from the post</h1>
 
 
 
-<div class="card" style="width: 18rem; margin: 10px">
 
-    <div class="card-body">
-      <div style="display: flex; flex-direction: row">
-        <h5 class="card-title">{{post}}  </h5>
-        
+  <div class="card-deck">
+      <div class="card" style="width: 800px; margin-bottom: 30px; margin-left: 25px; border-color: black; background-color: #e0ebeb ">
+        <div class="card-header" style="background-color: #a393eb; font-size: 25px; border-color: black; font-family: 'Source Code Pro', monospace;">
+          <a href= {% url 'user-detail' post.user.id %}><button type="button" class="btn btn-light" style="font-family: 'Source Code Pro', monospace; background-color: #a393eb; border-color: #a393eb; width: 120px; font-size: 20px;">{{post.user}}</button>
+        </a></div>
+        <div class="card-body">
+          <p class="card-text"><a href="{% url 'post' post.id %} "><button type="button" class="btn btn-light" style="border-color: black; width: 600px;">{{post.body}}</button></a></p>
+          <p><a href="/groupdetail/{{post.posted_in.id}}/"><button type="button" class="btn btn-dark" style="border-color: #a393eb;">Group: {{post.posted_in}}</button></a></p>
+          <a href={% url 'initiate-reply' post.id %}><button style="width: 100px; background-color: #f48db4; border-color: black; color: black; border-radius: 5px;">Reply</button></a>
+          <a href=#><button style="width: 100px; background-color: #f5c7f7; border-color: black; color: black; border-radius: 5px;">Delete</button></a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted"> posted-on: {{post.time_created}}</small>
+        </div>
       </div>
-      <p class="card-text">posted by {{post.user}}</p>
-      <p class="card-text">{{post.time_created}}</p>
-      <a href={% url 'initiate-reply' post.id %} class="btn btn-primary">Reply</a>
-      <a href="/command/1/delete" class="btn btn-primary">Delete</a>
-      {{post.dislike_count|add:post.like_count}}
-      <a href="/{{post.id}}/like">Likes</a>
-      <a href="/{{post.id}}/dislike">Dislike</a>
-    </div>
-  </div>
 {% include "reply_chain.html" %}
 </body>
 </html>

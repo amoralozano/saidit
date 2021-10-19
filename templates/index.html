@@ -56,9 +56,17 @@
         <div class="card-header" style="background-color: #a393eb; font-size: 25px; border-color: black; font-family: 'Source Code Pro', monospace;">
           <button type="button" class="btn btn-light" style="font-family: 'Source Code Pro', monospace; background-color: #a393eb; border-color: #a393eb; width: 120px; font-size: 20px;">{{post.user}}</button>
         </div>
+        
         <div class="card-body">
           <p class="card-text"><a href="{% url 'post' post.id %} "><button type="button" class="btn btn-light" style="border-color: black; width: 600px;">{{post.body}}</button></a></p>
           <p><a href="/groupdetail/{{post.posted_in.id}}/"><button type="button" class="btn btn-dark" style="border-color: #a393eb;">Group: {{post.posted_in}}</button></a></p>
+          <div>
+          <p class="card-text"><a href="{% url 'post' post.id %} "><button type="button" class="btn btn-light" style="border-color: black; width: 60px;">
+          {{post.dislike_count|add:post.like_count}}</button>
+          
+          <a href="/{{post.id}}/like"><button style="width: 75px; background-color: #f5c7f7; border-color: black; color: black; border-radius: 5px;">like</button></a>
+          <a href="/{{post.id}}/dislike"><button style="width: 75px; background-color: #f5c7f7; border-color: black; color: black; border-radius: 5px;">dislike</button></a>
+          </div>
           <a href="/follow/{{post.user.id}}/"><button style="width: 100px; background-color: #f48db4; border-color: black; color: black; border-radius: 5px;">Follow</button></a>
           <a href="/unfollow/{{post.user.id}}/"><button style="width: 100px; background-color: #f5c7f7; border-color: black; color: black; border-radius: 5px;">Unfollow</button></a>
         </div>

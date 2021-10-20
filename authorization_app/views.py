@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from saidituser.models import SaidItUser as user
+from saidituser.models import SaidItUser
 from authorization_app.forms import LoginForm, SignupForm
 from django.shortcuts import HttpResponseRedirect, reverse
 from django.contrib.auth import login, authenticate, logout
@@ -10,10 +10,10 @@ def signup_view(request):
         form = SignupForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
-            user.objects.create_user(display_name=data['display_name'], username=data['username'], password=data['password']) # noqa
+            SaidItUser.objects.create_user(display_name=data['display_name'], username=data['username'], password=data['password']) # noqa
             return HttpResponseRedirect(reverse('home'))
     form = SignupForm()
-    return render(request, 'login.html', {'form': form})
+    return render(request, 'signup.html', {'form': form})
 
 
 def login_view(request):

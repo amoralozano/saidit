@@ -23,29 +23,11 @@ class ReplyDetailView(View):
         return render(request, template_name, context)
 
 
-def num_likes(request, id):
-    like = Post.objects.get(id=id)
-    like.like_count +1
+def toggle_like(request, id):
+    like = Reply.objects.get(id=id)
+    like.like_dislike = not like.like_dislike
     like.save()
-    return HttpResponseRedirect('/')
-
-
-def num_dislikes(request, id):
-    dislike = Post.objects.get(id=id)
-    dislike.dislike_count +1
-    dislike.save()
-    return HttpResponseRedirect('/')
-
-
-
-def add_like(request):
-    like = Post.objects.filter(like_dislike=True).order_by('-time_submitted')
-    return render(request, 'post_details.html', {'like': like})
-
-
-def remove_like(request):
-    like = Post.objects.filter(like_dislike=False).order_by('-time_submitted')
-    return render(request, 'post_details.html', {'like': like})
+    return HttpResponseRedirect(reverse('reply-detail', args=[id]))
 
 
 @login_required

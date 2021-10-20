@@ -46,6 +46,7 @@ urlpatterns = [
     path("followers/<int:id>/", user_view.FollowerList.as_view()),
     path("<int:id>/like/", post_view.like_count),
     path("<int:id>/dislike/", post_view.dislike_count),
+    path("<int:id>/like-reply/", reply_view.toggle_like),
     path("following/<int:id>/", user_view.FollowingList.as_view()),
     path('follow/<int:id>/', user_view.follow, name="follow"),
     path('unfollow/<int:id>/', user_view.unfollow, name="follow"),

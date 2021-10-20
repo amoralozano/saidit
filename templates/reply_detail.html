@@ -32,6 +32,13 @@
       <p class="card-text">{{init_reply.date_replied}}</p>
       <a href={% url 'new-reply' init_reply.id %} class="btn btn-primary">Reply</a>
       <a href="/command/1/delete" class="btn btn-primary">Delete</a>
+      <a href="/{{init_reply.id}}/like-reply/">
+      {% if init_reply.like_dislike %}
+      Like
+      {% else %}
+      Dislike
+      {% endif %}
+      </a>
     </div>
   </div>
 

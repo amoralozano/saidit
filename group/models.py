@@ -10,7 +10,6 @@ class SubGroup(models.Model):
     created_by = models.ForeignKey(SaidItUser, on_delete=models.CASCADE)
     # member = models.ManyToManyField('self', blank=True, related_name='group_member')
     member = models.ManyToManyField(SaidItUser, blank=True, related_name='group_member')
-    # apply to group/ subscribe to group manytomany field?
 
     def __str__(self):
         return self.group_name

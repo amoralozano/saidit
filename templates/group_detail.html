@@ -1,4 +1,5 @@
 {% load static %}
+<!DOCTYPE html>
 <html>
   <head>
     <link
@@ -16,11 +17,32 @@
       crossorigin="anonymous"
     />
 
-    <title>SaidIt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Code+Pro:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Code+Pro:wght@500&family=Teko&display=swap" rel="stylesheet">
+
+    <title>{{group}} Group Page</title>
   </head>
-  <body>
-    <h1>This is the {{group}} detail page!</h1>
+  <body style="background-color: #5e63b6">
     {% include "navbar.html" %}
+    <h1 class="title"
+      style="
+        text-align: center;
+        font-family: 'Bebas Neue', cursive;
+        font-size: 100px;
+        margin-top: 25px;
+      ">{{group}}</h1>
 
    
       
@@ -54,19 +76,19 @@
       <p class="card-text">posted by {{post.user}} </p>
       <p class="card-text">{{post.time_created}}</p>
     
-    <a href= {% url 'post' post.id %}class="btn btn-primary">
+    <a href= {% url 'post' post.id %}>
       <button type="button" class="btn btn-primary position-relative">
-  go to post
-        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+  go to post 
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-black">
           {{post.replies.count}}
           <span class="visually-hidden">
-            Replies
+            Replies 
           </span>
         </span>
       </button>
-    </a>
+    </a> 
       {% if user in group.member.all %}
-      <a href={% url 'initiate-reply' post.id %} class="btn btn-primary">Reply</a>
+       <a href={% url 'initiate-reply' post.id %} class="btn btn-primary"> Reply</a>
       {% endif %}
       <a href="/command/1/delete" class="btn btn-primary">Delete</a>
     </div>

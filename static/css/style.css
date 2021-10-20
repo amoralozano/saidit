@@ -2,12 +2,11 @@
   background-color: purple;
 }
 
-.user-img {
-  height: 125px;
-  width: 125px;
-  margin-right: 20px;
-  margin-bottom: 16px;
-}
+/* .user-img {
+  height: 300px;
+  width: 300px;
+} */
+
 .login {
   color: lightslategrey;
 }

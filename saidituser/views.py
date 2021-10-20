@@ -55,7 +55,7 @@ def edit_userview(request, id):
             user.bio = data['bio']
             user.image = data['image']
             user.save()
-            return HttpResponseRedirect(reverse('user_detail', args=(id,)))
+            return HttpResponseRedirect(reverse('user-detail', args=(id,)))
 
     form = EditProfileForm(initial={
         'display_name': user.display_name,
@@ -78,4 +78,9 @@ class FollowerList(View):
 
 
 def handle_not_found(request, exception):
-    return render(request, 'not-found.html')
+    data = {}
+    return render(request, 'not-found.html', data )
+
+def error_500(request):
+    data = {}
+    return render(request,'500.html', data)
